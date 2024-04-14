@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Workbench&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: #d3d3d3;
+    background-size: cover;
+    background-position: center;
+}
+
+.nav{
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,.2);
+}
+
+.logo > img{
+    color: #000;
+    text-decoration: none;
+    width: 50px;
+    height: 35px;
+}
+
+nav a{
+    position: relative;
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+nav a::before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: .3s;
+}
+
+nav a:hover::before{
+    width: 100%;
+}
+
+.nav > a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    position: relative;
+}
+
+
+.nav > a::before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: .3s;
+}
+
+.nav a:hover::before{
+    width: 100%;
+}
+
+.searchbar{
+    overflow: hidden;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 2px;
+    height: 25px;
+    width: 200px;
+    font-size: 15px;
+}
+
+.text-container{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 32px;
+    font-family: "Workbench", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.game-container{
+    margin-top: 30px;
+}
+
+.game-container .line1 {
+    display: flex;
+    justify-content: center;
+}
+  
+.game-container > .line1 > div > a { /* from poe */
+    margin: 0 20px; /* Adjust the value to control the space between images */
+}
+  
+.game-container > .line1 > div > a:first-child { /* from poe */
+    margin-left: 0; /* Remove the left margin on the first image */
+}
+  
+.game-container > .line1 > div > a:last-child { /* from poe */
+    margin-right: 0; /* Remove the right margin on the last image */
+}
+  
+.game-container > .line1 > div > a > img {
+    width: 170px;
+    height: 170px;
+}
+
+.game-container > .line1 > div > p{
+    text-align: center;
+    margin: auto;
+    margin-left: -22px;
+}
+
+.game-container .line2 {
+    display: flex;
+    justify-content: center;
+}
+
+.game-container > .line2 > div > a { /* from poe */
+    margin: 0 20px; /* Adjust the value to control the space between images */
+}
+  
+.game-container > .line2 > div > a:first-child { /* from poe */
+    margin-left: 0; /* Remove the left margin on the first image */
+}
+  
+.game-container > .line2 > div > a:last-child { /* from poe */
+    margin-right: 0; /* Remove the right margin on the last image */
+}
+  
+.game-container > .line2 > div > a > img {
+    width: 170px;
+    height: 170px;
+}
+
+.game-container > .line2 > div > p{
+    text-align: center;
+    margin: auto;
+    margin-left: -22px;
+}
+
+.footer-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 250px;
+}
+
+footer{
+    background-color: #fff;
+}
+
+.social{
+    display: flex;
+    justify-content: center;
+}
+
+.social > a{
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 75px;
+}
+
+.social > a > i{
+    font-size: 20px;
+    color: #000;
+    opacity: 0.9;
+}
+
+.social > a:hover{
+    transition: 0.5s;
+    background-color: #555;
+}
+
+.social > a:hover > i{
+    transition: 0.5s;
+    color: #000;
+}
+
+.footer{
+    margin: 30px 0;
+}
+
+.footer > ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer > ul > li > a{
+    color: #000;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.75;
+    transition: 0.5s;
+}
+
+.footer > ul > li > a:hover{
+    opacity: 1.2;
+}
