@@ -7,13 +7,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-body{
-    min-height: 100vh;
-    background: #d3d3d3;
-    background-size: cover;
-    background-position: center;
-}
-
 .nav{
     top: 0;
     left: 0;
@@ -226,29 +219,3 @@ footer{
 .footer > ul > li > a:hover{
     opacity: 1.2;
 }
-
-p{
-    margin-bottom: 20px;
-}
-
-.selection{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 160px;
-}
-
-.pvpBtn, .comBtn {
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 5px;
-    box-shadow: 3px 1px 1px;
-}
-
-button:hover{
-    background-color: #777;
-}
-
