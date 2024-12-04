@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Tic-Tac-Toe Results </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+    .search-sort-container {
+      margin: 20px auto;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-sort-container input, .search-sort-container select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .results {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin: 30px auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .results, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .result {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .result:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1> Tic-Tac-Toe Results </h1>
+
+  <div class="search-sort-container">
+    <input type="text" id="searchBox" placeholder="Search by player name..." oninput="filterResults()">
+    <select id="sortDropdown" onchange="sortResults()">
+      <option value="recent"> Sort by Most Recent </option>
+      <option value="oldest"> Sort by Oldest </option>
+      <option value="winner"> Sort by Winner </option>
+      <option value="draw"> Show Only Draws </option>
+    </select>
+  </div>
+
+  <div class="results">
+    <h3> Stored Results </h3>
+    <div id="resultsContainer">
+    </div>
+  </div>
+
+  <script>
+    let allResults = [];
+
+    const displayResults = (results) => {
+      const container = document.getElementById("resultsContainer");
+      container.innerHTML = results.length
+        ? results.map(result => `
+          <div class="result">
+            <p><strong>Player 1:</strong> ${result.player1}</p>
+            <p><strong>Player 2:</strong> ${result.player2}</p>
+            <p><strong>Winner:</strong> ${result.winner || "Draw"}</p>
+            <p><strong>Date:</strong> ${new Date(result.date).toLocaleString()}</p>
+          </div>
+        `).join("")
+        : "<p>No results found.</p>";
+    };
+
+    const sortResults = () => {
+      const option = document.getElementById("sortDropdown").value;
+      let sorted = [...allResults];
+
+      if (option === "recent") {
+        sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+      } else if (option === "oldest") {
+        sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else if (option === "winner") {
+        sorted.sort((a, b) => (a.winner || "").localeCompare(b.winner || ""));
+      } else if (option === "draw") {
+        sorted = sorted.filter(r => r.draw);
+      }
+
+      displayResults(sorted);
+    };
+
+    const data = [
+        { player1: "Peter", player2: "Kazz", winner: "Peter", draw: false, date: "2024-11-27T11:16:42Z" },
+        { player1: "Peter", player2: "Baggio", winner: "Baggio", draw: false, date: "2024-11-28T13:24:58Z" },
+        { player1: "James", player2: "Ricky", winner: null, draw: true, date: "2024-11-29T14:10:26Z" },
+        { player1: "Tony", player2: "Dickson", winner: "Tony", draw: false, date: "2024-12-01T09:37:48Z" },
+        { player1: "Sunny", player2: "Himmy", winner: "Himmy", draw: false, date: "2024-12-03T15:23:19Z" },
+        { player1: "Adrian", player2: "Casper", winner: null, draw: true, date: "2024-12-03T17:41:29Z" },
+        { player1: "Adrian", player2: "Sunny", winner: null, draw: true, date: "2024-12-04T14:41:32Z" },
+        { player1: "Sunny", player2: "Gordon", winner: null, draw: true, date: "2024-12-03T14:45:51Z" }
+      ];
+
+    const filterResults = () => {
+      const searchQuery = document.getElementById("searchBox").value.toLowerCase();
+      const filteredResults = allResults.filter((result) => {
+        return (result.player1.toLowerCase().includes(searchQuery) || result.player2.toLowerCase().includes(searchQuery));
+      });
+      displayResults(filteredResults);
+    };
+
+    const fetchResults = async () => {
+      try {
+        allResults = data;
+        displayResults(allResults);
+        } catch (error) {
+          console.error("Error fetching results:", error);
+      }
+    }
+    fetchResults()
+  </script>
+</body>
+</html>
