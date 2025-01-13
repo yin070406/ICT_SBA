@@ -9,24 +9,27 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 require_once "config.php";
  
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
+$username = "";
+$password = "";
+$username_error = "";
+$password_error = "";
+$login_error = "";
  
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_error = "Please enter username.";
     } else{
         $username = trim($_POST["username"]);
     }
     
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_error = "Please enter your password.";
     } else{
         $password = trim($_POST["password"]);
     }
     
-    if(empty($username_err) && empty($password_err)){
+    if(empty($username_error) && empty($password_error)){
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
